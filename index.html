@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AQUA-CYCLE LAB 2.0 — Petualangan Siklus Air</title>
+<style>
+:root{--blue:#0b6e99;--cyan:#22b8cf;--sky:#e9f9ff;--navy:#123047;--green:#36a269;--yellow:#ffc857;--pink:#ff7b9c;--white:#fff;--shadow:0 14px 35px rgba(18,48,71,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--navy);background:linear-gradient(180deg,#f4fcff,#fff 45%,#eefaff)}
+button{font:inherit;border:0;cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:0 18px}
+nav{position:sticky;top:0;z-index:20;background:#ffffffee;backdrop-filter:blur(12px);border-bottom:1px solid #dff2f8}
+.navin{height:68px;display:flex;align-items:center;gap:10px}.brand{font-weight:900;color:var(--blue);margin-right:auto;display:flex;align-items:center;gap:8px}.brand span{font-size:28px}
+.navlinks{display:flex;gap:6px;flex-wrap:wrap}.navlinks button{padding:9px 11px;border-radius:12px;background:transparent;color:#476277;font-weight:750}.navlinks button:hover,.navlinks button.active{background:var(--sky);color:var(--blue)}
+.stats{display:flex;gap:7px;margin-left:10px}.pill{padding:8px 11px;border-radius:999px;background:#f2fbff;border:1px solid #d8f0f7;font-weight:800;font-size:13px}
+.hero{padding:48px 0 28px}.heroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:center}.eyebrow{color:var(--blue);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:13px}.hero h1{font-size:clamp(38px,6vw,68px);line-height:.98;margin:8px 0 16px}.hero p{font-size:18px;line-height:1.65;color:#547083}.cta{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.primary,.secondary{padding:13px 18px;border-radius:14px;font-weight:900}.primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px #0b6e9930}.secondary{background:#fff;color:var(--blue);border:1px solid #ccecf5}
+.aquaCard{background:linear-gradient(145deg,#dff8ff,#fff);border:1px solid #ccecf5;border-radius:28px;min-height:310px;display:grid;place-items:center;box-shadow:var(--shadow);position:relative;overflow:hidden}.aqua{font-size:120px;filter:drop-shadow(0 15px 10px #70cde755);animation:bob 2.5s ease-in-out infinite}.bubble{position:absolute;border-radius:50%;background:#fff9;width:40px;height:40px;animation:float 5s infinite}.b1{left:15%;bottom:10%}.b2{right:18%;top:18%;animation-delay:1s}.b3{left:25%;top:25%;animation-delay:2s}@keyframes bob{50%{transform:translateY(-12px) rotate(3deg)}}@keyframes float{50%{transform:translateY(-80px);opacity:.2}}
+section{padding:28px 0}.sectionTitle{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}.sectionTitle h2{margin:0;font-size:30px}.sectionTitle p{margin:4px 0 0;color:#668093}
+.card{background:#fff;border:1px solid #dceff5;border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+.missionGrid,.featureGrid,.achGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mission{padding:18px;border-radius:18px;background:#f7fcff;border:1px solid #d9f0f7}.mission.done{background:#edfff6;border-color:#bde8cf}.icon{font-size:34px}.mission h3{margin:8px 0 5px}.small{font-size:14px;color:#647b8b;line-height:1.55}
+.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:8px}.tab{white-space:nowrap;padding:10px 14px;border-radius:999px;background:#eef9fc;color:#456678;font-weight:850}.tab.active{background:var(--blue);color:#fff}
+.materialBox{min-height:300px}.materialBox h3{font-size:25px;margin-top:0}.materialBox p,.materialBox li{line-height:1.7;color:#526c7d}.clickMap{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:20px}.step{padding:14px 8px;text-align:center;border-radius:16px;background:#effaff;border:2px solid #d7eff7;font-weight:850;cursor:pointer}.step:hover,.step.selected{border-color:var(--cyan);transform:translateY(-2px)}.arrow{text-align:center;align-self:center;font-size:22px;color:#8db5c4}
+.labGrid{display:grid;grid-template-columns:1fr .85fr;gap:16px}.scene{height:360px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(#a8e8ff 0 60%,#65c6e6 60% 76%,#6fbd70 76%);border:1px solid #c7edf6}.sun{position:absolute;right:8%;top:8%;font-size:55px}.cloud{position:absolute;font-size:65px;transition:.4s}.cloud1{left:35%;top:13%}.cloud2{left:58%;top:22%;font-size:48px}.ground{position:absolute;bottom:0;width:100%;height:24%;background:linear-gradient(#7bc873,#58a85b)}.rain{position:absolute;left:58%;top:34%;font-size:34px;opacity:0;transition:.3s}.water{position:absolute;left:8%;bottom:12%;font-size:70px}.steam{position:absolute;left:16%;bottom:33%;font-size:42px;opacity:0;transition:.3s}.infil{position:absolute;left:30%;bottom:2%;font-size:30px;opacity:0;transition:.3s}.labControls{display:grid;gap:14px}.range label{display:flex;justify-content:space-between;font-weight:850}.range input{width:100%;accent-color:var(--blue)}.labButtons{display:flex;gap:8px;flex-wrap:wrap}.result{padding:14px;border-radius:15px;background:#f5fbfd;border:1px dashed #b7dce7;line-height:1.55}
+.gameNav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.gameNav button{padding:11px 14px;border-radius:13px;background:#eef9fc;font-weight:850;color:#476879}.gameNav button.active{background:var(--blue);color:#fff}.gameBoard{min-height:310px}.orderList{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.orderItem{padding:12px 15px;background:#fff;border:2px solid #cdebf3;border-radius:14px;font-weight:850;cursor:pointer}.orderItem.selected{border-color:var(--blue);background:#e9f9ff}.slots{display:flex;flex-wrap:wrap;gap:8px;min-height:55px;padding:10px;border-radius:15px;background:#f6fbfd;border:1px dashed #badce6}.slot{padding:10px 13px;border-radius:12px;background:#fff;border:1px solid #cce5ec}.choiceGrid{display:grid;gap:10px}.choice{padding:14px;border-radius:15px;text-align:left;background:#f5fbfd;border:2px solid #d6edf3;font-weight:750}.choice:hover{border-color:var(--cyan)}.choice.correct{border-color:var(--green);background:#eafff2}.choice.wrong{border-color:#e27b7b;background:#fff0f0}.feedback{margin-top:14px;padding:13px;border-radius:14px;display:none}.feedback.show{display:block}.success{background:#eafff2;color:#24754b}.error{background:#fff0f0;color:#a33b3b}
+.quizQ{font-size:20px;font-weight:850;line-height:1.45}.quizOpts{display:grid;gap:9px;margin-top:16px}.quizOpt{padding:14px;text-align:left;border:2px solid #d5edf4;border-radius:14px;background:#fff}.quizOpt:hover{border-color:var(--cyan)}.quizOpt.correct{background:#eafff2;border-color:var(--green)}.quizOpt.wrong{background:#fff0f0;border-color:#df7b7b}.progress{height:12px;background:#eaf4f7;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));width:0;transition:.4s}
+.achGrid{grid-template-columns:repeat(5,1fr)}.badge{padding:18px 10px;text-align:center;border-radius:18px;background:#f6fbfd;border:1px solid #d8edf3;opacity:.45}.badge.unlocked{opacity:1;background:#fffdf0;border-color:#ffe09a;box-shadow:0 8px 20px #ffc85720}.badge .big{font-size:40px}.badge strong{display:block;margin:6px 0}.modal{position:fixed;inset:0;background:#12304788;display:grid;place-items:center;z-index:50;padding:20px}.modal.hidden{display:none}.modalBox{background:#fff;border-radius:24px;padding:25px;max-width:420px;width:100%;box-shadow:0 25px 70px #0003}.modal input{width:100%;padding:13px;border:2px solid #d7edf3;border-radius:13px;margin:12px 0}.toast{position:fixed;right:18px;bottom:18px;background:#123047;color:#fff;padding:13px 16px;border-radius:14px;opacity:0;transform:translateY(10px);transition:.3s;z-index:60}.toast.show{opacity:1;transform:none}
+footer{padding:40px 0;color:#6c8290;text-align:center}.hidden{display:none!important}
+@media(max-width:850px){.heroGrid,.labGrid{grid-template-columns:1fr}.missionGrid,.featureGrid{grid-template-columns:1fr 1fr}.achGrid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.stats{margin-left:0}.clickMap{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:560px){.missionGrid,.featureGrid{grid-template-columns:1fr}.hero{padding-top:28px}.hero h1{font-size:42px}.clickMap{grid-template-columns:repeat(2,1fr)}.navin{height:auto;padding:10px 0}.brand{font-size:14px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap navin">
+<div class="brand"><span>💧</span>AQUA-CYCLE LAB 2.0</div>
+<div class="navlinks">
+<button data-go="home" class="active">Beranda</button><button data-go="materi">Materi</button><button data-go="lab">Water Lab</button><button data-go="games">Games</button><button data-go="quiz">Quiz</button><button data-go="achievement">Achievement</button>
+</div>
+<div class="stats"><div class="pill">⭐ <span id="xp">0</span> XP</div><div class="pill">🏅 <span id="pct">0</span>%</div></div>
+</div></nav>
+
+<main>
+<section id="home"><div class="wrap hero"><div class="heroGrid">
+<div><div class="eyebrow">IPA • Kelas 5 SD</div><h1>Jelajahi Perjalanan Air! 🌧️</h1><p>Masuk ke laboratorium mini AQUA-CYCLE dan bantu Aqua memahami bagaimana air berpindah, berubah wujud, lalu kembali lagi ke lingkungan.</p>
+<div class="cta"><button class="primary" onclick="go('materi')">🚀 Mulai Petualangan</button><button class="secondary" onclick="go('lab')">🧪 Coba Laboratorium</button></div>
+<div class="progress"><span id="progressBar"></span></div><p class="small"><b id="doneCount">0</b> misi selesai. Kumpulkan XP dan buka badge!</p></div>
+<div class="aquaCard"><div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div><div class="aqua">💧</div></div>
+</div></div></section>
+
+<section><div class="wrap"><div class="sectionTitle"><div><h2>🎯 Misi Utama</h2><p>Selesaikan aktivitas untuk menguasai siklus air.</p></div></div><div class="missionGrid" id="missions"></div></div></section>
+
+<section><div class="wrap"><div class="sectionTitle"><div><h2>✨ Fitur Interaktif</h2><p>Belajar dengan mencoba, memilih, dan menemukan.</p></div></div>
+<div class="featureGrid">
+<div class="card"><div class="icon">📚</div><h3>Materi Eksploratif</h3><p class="small">Klik tahapan siklus air untuk menemukan apa yang terjadi pada air.</p></div>
+<div class="card"><div class="icon">🧪</div><h3>Simulasi Water Lab</h3><p class="small">Atur panas dan pendinginan lalu amati perubahan yang terjadi.</p></div>
+<div class="card"><div class="icon">🎮</div><h3>Game Berbasis Misi</h3><p class="small">Susun proses, pecahkan kasus, dan bantu Aqua sampai ke tujuan.</p></div>
+</div></div></section>
+
+<section id="materi"><div class="wrap"><div class="sectionTitle"><div><h2>📚 Materi Interaktif</h2><p>Pelajari sedikit demi sedikit, lalu buktikan dengan aktivitas.</p></div></div>
+<div class="tabs" id="materialTabs"></div><div class="card materialBox" id="materialContent"></div></div></section>
+
+<section id="lab"><div class="wrap"><div class="sectionTitle"><div><h2>🧪 Water Lab</h2><p>Eksperimen virtual: bagaimana panas dan dingin memengaruhi air?</p></div></div>
+<div class="labGrid"><div class="scene" id="labScene"><div class="sun">☀️</div><div class="cloud cloud1">☁️</div><div class="cloud cloud2">☁️</div><div class="rain">🌧️</div><div class="steam">💨</div><div class="infil">⬇️⬇️</div><div class="water">💧</div><div class="ground"></div></div>
+<div class="card labControls"><div class="range"><label>Panas 🔥 <span id="heatVal">50</span>%</label><input id="heat" type="range" min="0" max="100" value="50"></div>
+<div class="range"><label>Pendinginan ❄️ <span id="coolVal">20</span>%</label><input id="cool" type="range" min="0" max="100" value="20"></div>
+<div class="result" id="labResult">Atur kondisi eksperimen. Setelah itu tekan <b>Jalankan Eksperimen</b>.</div>
+<div class="labButtons"><button class="primary" onclick="runLab()">▶️ Jalankan Eksperimen</button><button class="secondary" onclick="resetLab()">↺ Reset</button></div>
+<div class="card" style="box-shadow:none;background:#f7fcff"><b>🔎 Tantangan Lab</b><p class="small">Cari kondisi yang membuat <b>penguapan</b> paling mudah terjadi, lalu jalankan eksperimen.</p><button class="secondary" onclick="checkLabMission()">🔬 Periksa Jawaban</button><div id="labMission" class="small"></div></div>
+</div></div></div></section>
+
+<section id="games"><div class="wrap"><div class="sectionTitle"><div><h2>🎮 Aqua Game Zone</h2><p>Gunakan pengetahuanmu untuk menyelesaikan misi.</p></div></div>
+<div class="gameNav"><button class="active" onclick="switchGame(0,this)">🔢 Susun Siklus</button><button onclick="switchGame(1,this)">🕵️ Water Detective</button><button onclick="switchGame(2,this)">🗺️ Petualangan Aqua</button></div>
+<div class="card gameBoard" id="gameArea"></div></div></section>
+
+<section id="quiz"><div class="wrap"><div class="sectionTitle"><div><h2>🧠 Quiz Tantangan</h2><p>10 pertanyaan untuk menguji pemahamanmu.</p></div></div><div class="card"><div class="progress"><span id="quizProgress"></span></div><div id="quizBox" style="margin-top:18px"></div></div></div></section>
+
+<section id="achievement"><div class="wrap"><div class="sectionTitle"><div><h2>🏆 Achievement</h2><p>Badge terbuka berdasarkan aktivitasmu.</p></div></div><div class="achGrid" id="achievementGrid"></div><div class="card" style="margin-top:16px"><b>👩‍🔬 Profil Penjelajah</b><p class="small">Nama: <span id="achName">Penjelajah Aqua</span> • XP: <span id="achXP">0</span> • Progress: <span id="achPct">0</span>%</p><button class="secondary" onclick="openName()">✏️ Ganti Nama</button> <button class="secondary" onclick="resetAll()">🗑️ Reset Progress</button></div></div></section>
+</main>
+
+<footer>AQUA-CYCLE LAB 2.0 • Media pembelajaran IPA kelas 5 SD • Belajar dengan menjelajah 🌊</footer>
+<div class="toast" id="toast"></div>
+<div class="modal hidden" id="nameModal"><div class="modalBox"><h2>👋 Hai, Penjelajah!</h2><p class="small">Masukkan nama agar perjalananmu lebih personal.</p><input id="nameInput" placeholder="Nama kamu"><button class="primary" onclick="saveName()">Mulai!</button></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const state=JSON.parse(localStorage.getItem('aqua2')||'{}');
+state.xp??=0; state.done??=[]; state.name??='Penjelajah Aqua'; state.material??=0; state.gameDone??=[]; state.quizBest??=0; state.labDone??=false;
+const save=()=>localStorage.setItem('aqua2',JSON.stringify(state));
+function go(id){$(id)?.scrollIntoView({behavior:'smooth'});document.querySelectorAll('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===id))}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+function toast(t){const x=$('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
+function addXP(n,tag){state.xp+=n;if(tag&&!state.done.includes(tag))state.done.push(tag);save();renderAll();toast(`+${n} XP! 🎉`)}
+const missions=[
+['materi','📚','Eksplorasi Materi','Buka dan pahami tahapan siklus air.','5'],
+['lab','🧪','Ilmuwan Cilik','Jalankan simulasi Water Lab.','20'],
+['order','🔢','Penyusun Siklus','Selesaikan game Susun Siklus.','25'],
+['detective','🕵️','Water Detective','Pecahkan kasus air.','25'],
+['aqua','🗺️','Petualangan Aqua','Selesaikan perjalanan Aqua.','25'],
+['quiz','🧠','Water Thinker','Selesaikan Quiz.','40']
+];
+function renderMissions(){$('missions').innerHTML=missions.map(m=>`<div class="mission ${state.done.includes(m[0])?'done':''}"><div class="icon">${m[1]}</div><h3>${m[2]} ${state.done.includes(m[0])?'✅':''}</h3><div class="small">${m[3]}<br><b>+${m[4]} XP</b></div></div>`).join('')}
+const mats=[
+['💧','Apa itu Siklus Air?','Siklus air adalah pergerakan air yang berlangsung terus-menerus dari permukaan Bumi ke atmosfer dan kembali lagi ke Bumi. Air dapat berpindah tempat dan berubah wujud selama proses ini.'],
+['☀️','Penguapan (Evaporasi)','Panas Matahari membantu air di laut, sungai, dan danau berubah dari cair menjadi uap air. Uap air kemudian naik ke atmosfer.'],
+['☁️','Kondensasi','Saat uap air naik dan udara lebih dingin, uap air berubah menjadi titik-titik air yang berkumpul membentuk awan.'],
+['🌧️','Presipitasi','Ketika titik-titik air di awan semakin banyak dan berat, air dapat jatuh ke permukaan Bumi sebagai hujan. Dalam kondisi tertentu, presipitasi juga dapat berupa salju atau hujan es.'],
+['🌱','Infiltrasi & Aliran Permukaan','Sebagian air hujan meresap ke dalam tanah melalui infiltrasi. Sebagian lainnya mengalir di permukaan menuju sungai, danau, atau laut.'],
+['🔄','Siklus Berulang','Air terus berpindah melalui berbagai proses. Karena berlangsung berulang, proses ini disebut siklus air.']
+];
+function renderMaterials(){$('materialTabs').innerHTML=mats.map((m,i)=>`<button class="tab ${state.material===i?'active':''}" onclick="showMat(${i})">${m[0]} ${m[1].split('(')[0]}</button>`).join('');const m=mats[state.material];$('materialContent').innerHTML=`<h3>${m[0]} ${m[1]}</h3><p>${m[2]}</p><div class="clickMap">${['Evaporasi','Kondensasi','Presipitasi','Infiltrasi','Aliran permukaan','Kembali ke laut','Ulangi'].map((x,i)=>`<div class="step ${i===state.material?'selected':''}" onclick="showMat(${Math.min(i,5)})">${x}</div>`).join('')}</div><div class="result" style="margin-top:18px"><b>💡 Coba pikirkan:</b> Apa yang akan terjadi jika Matahari tidak memberikan panas? Jelaskan dengan bahasamu sendiri.</div>`}
+function showMat(i){state.material=i;save();renderMaterials();if(i===mats.length-1)addXP(5,'materi')}
+function updateLab(){let h=+$('heat').value,c=+$('cool').value;$('heatVal').textContent=h;$('coolVal').textContent=c}
+$('heat').oninput=updateLab;$('cool').oninput=updateLab;
+function runLab(){let h=+$('heat').value,c=+$('cool').value;let rain=$('labScene').querySelector('.rain'),steam=$('labScene').querySelector('.steam'),inf=$('labScene').querySelector('.infil');steam.style.opacity=h>55?'1':'0';rain.style.opacity=c>55?'1':'.15';inf.style.opacity=(h>45&&c>55)?'1':'0';let text=h>65&&c<40?'🔥 Air menerima banyak panas → penguapan meningkat. Uap air naik ke atmosfer.':c>65?'❄️ Pendinginan kuat → kondensasi lebih mudah, sehingga awan dan peluang hujan meningkat.':'🌤️ Kondisi sedang → beberapa proses terjadi, tetapi belum dominan.';$('labResult').innerHTML=text+'<br><br><b>Prediksi:</b> coba ubah satu slider dan bandingkan hasilnya.';if(!state.labDone){state.labDone=true;addXP(20,'lab')}}
+function resetLab(){$('heat').value=50;$('cool').value=20;updateLab();$('labResult').textContent='Atur kondisi eksperimen. Setelah itu tekan Jalankan Eksperimen.';$('labScene').querySelector('.steam').style.opacity=0;$('labScene').querySelector('.rain').style.opacity=0;$('labScene').querySelector('.infil').style.opacity=0}
+function checkLabMission(){let h=+$('heat').value,c=+$('cool').value;if(h>=75&&c<=35){$('labMission').innerHTML='<b style="color:#24754b">Benar! 🌞 Panas tinggi mendukung penguapan.</b>';if(!state.done.includes('labMission'))addXP(10,'labMission')}else $('labMission').textContent='Belum tepat. Naikkan panas dan jangan terlalu tinggi pendinginannya.'}
+
+let game=0,orderSel=[],detectiveDone=false,aquaStep=0;
+function switchGame(i,btn){game=i;document.querySelectorAll('.gameNav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderGame()}
+function renderGame(){if(game===0)renderOrder();if(game===1)renderDetective();if(game===2)renderAqua()}
+const order=['Penguapan','Kondensasi','Presipitasi','Infiltrasi / Aliran Permukaan'];
+function renderOrder(){let shuffled=[...order].sort(()=>Math.random()-.5);$('gameArea').innerHTML=`<h3>🔢 Susun Siklus Air</h3><p class="small">Klik proses sesuai urutan yang benar. Pilihan yang kamu klik akan masuk ke kotak urutan.</p><div class="orderList">${shuffled.map(x=>`<button class="orderItem" onclick="pickOrder(this,'${x}')">${x}</button>`).join('')}</div><p><b>Urutanmu:</b></p><div class="slots" id="slots"></div><div class="labButtons"><button class="primary" onclick="checkOrder()">✅ Periksa</button><button class="secondary" onclick="renderOrder()">↺ Acak Lagi</button></div><div class="feedback" id="orderFb"></div>`}
+function pickOrder(btn,x){if(orderSel.length>=4||btn.classList.contains('selected'))return;orderSel.push(x);btn.classList.add('selected');$('slots').innerHTML=orderSel.map((v,i)=>`<span class="slot">${i+1}. ${v}</span>`).join('')}
+function checkOrder(){let ok=JSON.stringify(orderSel)===JSON.stringify(order);let f=$('orderFb');f.className='feedback show '+(ok?'success':'error');f.innerHTML=ok?'🎉 Tepat! Kamu memahami urutan utama siklus air.':'Coba lagi. Ingat: air dipanaskan → menjadi uap → mengalami pendinginan → membentuk awan → turun sebagai presipitasi.';if(ok&&!state.gameDone.includes('order')){state.gameDone.push('order');addXP(25,'order')}orderSel=[]}
+const cases=[
+['Setelah hujan, air mengalir menuju sungai. Proses yang paling tepat disebut…',['Infiltrasi','Aliran permukaan','Kondensasi','Evaporasi'],1,'Air bergerak di atas permukaan tanah menuju tempat yang lebih rendah.'],
+['Jemuran menjadi kering saat terkena panas Matahari. Proses yang terjadi adalah…',['Presipitasi','Kondensasi','Evaporasi','Infiltrasi'],2,'Air cair berubah menjadi uap karena menerima energi panas.'],
+['Awan terbentuk ketika uap air mengalami…',['Kondensasi','Evaporasi','Aliran permukaan','Pembekuan tanah'],0,'Uap air mendingin lalu berubah menjadi titik-titik air.']
+];
+function renderDetective(){let c=cases[Math.min(state.detectiveIndex||0,cases.length-1)];$('gameArea').innerHTML=`<h3>🕵️ Water Detective</h3><p class="small">${c[0]}</p><div class="choiceGrid">${c[1].map((x,i)=>`<button class="choice" onclick="detectiveAnswer(${i})">${String.fromCharCode(65+i)}. ${x}</button>`).join('')}</div><div class="feedback" id="detFb"></div>`}
+function detectiveAnswer(i){let idx=state.detectiveIndex||0,c=cases[idx],f=$('detFb');if(i===c[2]){f.className='feedback show success';f.innerHTML='🔎 Benar! '+c[3];state.detectiveIndex=idx+1;if(state.detectiveIndex>=cases.length){state.detectiveIndex=0;if(!state.gameDone.includes('detective')){state.gameDone.push('detective');addXP(25,'detective')}}else setTimeout(renderDetective,900)}else{f.className='feedback show error';f.textContent='Belum tepat. Baca petunjuk prosesnya lalu coba lagi.'}}
+
+function renderAqua(){const stages=[['🌊','Aqua berada di laut. Matahari mulai memanaskan permukaan air.','Apa yang harus terjadi agar Aqua bisa naik ke udara?','Penguapan'],['☁️','Aqua sudah menjadi uap dan naik. Udara di atas lebih dingin.','Perubahan apa yang membentuk titik-titik air dan awan?','Kondensasi'],['🌧️','Titik air berkumpul semakin banyak dan berat.','Bagaimana Aqua kembali ke permukaan?','Presipitasi'],['🌱','Aqua sampai di permukaan. Sebagian meresap ke tanah, sebagian mengalir.','Apa nama proses air masuk ke dalam tanah?','Infiltrasi']];let s=stages[aquaStep];$('gameArea').innerHTML=`<div style="font-size:65px">${s[0]}</div><h3>🗺️ Petualangan Aqua — Level ${aquaStep+1}/4</h3><p>${s[1]}</p><p><b>${s[2]}</b></p><div class="choiceGrid">${[s[3],'Fotosintesis','Pernapasan'].sort(()=>Math.random()-.5).map(x=>`<button class="choice" onclick="aquaAnswer('${x}','${s[3]}')">${x}</button>`).join('')}</div><div class="feedback" id="aquaFb"></div>`}
+function aquaAnswer(x,correct){let f=$('aquaFb');if(x===correct){f.className='feedback show success';f.textContent='✨ Tepat! Aqua bisa melanjutkan perjalanan.';aquaStep++;if(aquaStep>=4){aquaStep=0;if(!state.gameDone.includes('aqua')){state.gameDone.push('aqua');addXP(25,'aqua')}setTimeout(renderAqua,900)}else setTimeout(renderAqua,800)}else{f.className='feedback show error';f.textContent='Coba perhatikan perubahan yang dialami air pada tahap ini.'}}
+
+const questions=[
+['Apa sumber energi utama yang membantu terjadinya penguapan?',['Bulan','Matahari','Angin malam','Tanah'],1],
+['Perubahan wujud cair menjadi gas disebut…',['Kondensasi','Presipitasi','Evaporasi','Infiltrasi'],2],
+['Uap air berubah menjadi titik-titik air melalui proses…',['Kondensasi','Evaporasi','Aliran permukaan','Infiltrasi'],0],
+['Air yang jatuh dari awan ke permukaan Bumi disebut…',['Infiltrasi','Presipitasi','Transpirasi','Sublimasi'],1],
+['Air yang meresap masuk ke tanah disebut…',['Infiltrasi','Evaporasi','Kondensasi','Presipitasi'],0],
+['Contoh aliran permukaan adalah…',['Air hujan mengalir menuju sungai','Uap naik ke udara','Titik air membentuk awan','Air menjadi uap'],0],
+['Mengapa awan dapat menghasilkan hujan?',['Titik air berkumpul dan menjadi cukup berat','Awan menyerap tanah','Matahari berubah menjadi air','Angin membuat air hilang'],0],
+['Siklus air disebut siklus karena…',['Hanya terjadi sekali','Air terus berpindah melalui proses berulang','Air tidak pernah berubah','Air hanya ada di laut'],1],
+['Ketika panas meningkat, penguapan umumnya…',['Berkurang','Tidak berubah','Meningkat','Berhenti'],2],
+['Urutan yang paling tepat adalah…',['Kondensasi–Evaporasi–Presipitasi','Evaporasi–Kondensasi–Presipitasi','Presipitasi–Kondensasi–Evaporasi','Infiltrasi–Evaporasi–Kondensasi'],1]
+];
+let qi=0,qscore=0,qanswered=false;
+function renderQuiz(){let q=questions[qi];$('quizProgress').style.width=(qi/questions.length*100)+'%';$('quizBox').innerHTML=`<p class="small">Pertanyaan ${qi+1} dari ${questions.length} • Skor ${qscore}</p><div class="quizQ">${q[0]}</div><div class="quizOpts">${q[1].map((x,i)=>`<button class="quizOpt" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${x}</button>`).join('')}</div><div class="feedback" id="quizFb"></div>`}
+function answerQuiz(i){if(qanswered)return;qanswered=true;let q=questions[qi],f=$('quizFb'),opts=document.querySelectorAll('.quizOpt');opts[q[2]].classList.add('correct');if(i===q[2]){qscore++;f.className='feedback show success';f.textContent='🎉 Benar! Pemahamanmu makin kuat.'}else{opts[i].classList.add('wrong');f.className='feedback show error';f.textContent='Belum tepat. Ingat kembali proses pada materi.'}setTimeout(()=>{qi++;qanswered=false;if(qi<questions.length)renderQuiz();else finishQuiz()},1100)}
+function finishQuiz(){let pct=Math.round(qscore/questions.length*100);state.quizBest=Math.max(state.quizBest,pct);save();$('quizProgress').style.width='100%';$('quizBox').innerHTML=`<div style="text-align:center;padding:30px"><div style="font-size:65px">🏆</div><h3>Quiz selesai!</h3><p>Skormu <b>${qscore}/${questions.length}</b> (${pct}%).</p><p class="small">${pct>=80?'Hebat! Kamu siap menjadi Water Master!':'Bagus! Coba ulangi materi dan tantang dirimu lagi.'}</p><button class="primary" onclick="restartQuiz()">🔁 Coba Lagi</button></div>`;if(!state.done.includes('quiz'))addXP(40,'quiz')}
+function restartQuiz(){qi=0;qscore=0;qanswered=false;renderQuiz()}
+
+const badges=[['💧','First Drop','Mulai petualangan'],['🔬','Junior Scientist','Menjalankan lab'],['🎮','Water Gamer','Menyelesaikan semua game'],['🧠','Water Thinker','Menyelesaikan quiz'],['🌊','Water Master','Menyelesaikan semua misi']];
+function renderAchievements(){let allGames=['order','detective','aqua'].every(x=>state.gameDone.includes(x));let unlocked=[state.done.includes('materi'),state.done.includes('lab'),allGames,state.done.includes('quiz'),missions.every(m=>state.done.includes(m[0]))];$('achievementGrid').innerHTML=badges.map((b,i)=>`<div class="badge ${unlocked[i]?'unlocked':''}"><div class="big">${b[0]}</div><strong>${b[1]}</strong><div class="small">${unlocked[i]?'Terbuka!':b[2]}</div></div>`).join('');$('achName').textContent=state.name;$('achXP').textContent=state.xp}
+function renderAll(){let pct=Math.min(100,Math.round(state.done.length/missions.length*100));$('xp').textContent=state.xp;$('pct').textContent=pct;$('achPct').textContent=pct;$('doneCount').textContent=state.done.length;$('progressBar').style.width=pct+'%';renderMissions();renderMaterials();renderAchievements()}
+function openName(){$('nameInput').value=state.name;$('nameModal').classList.remove('hidden');$('nameInput').focus()}
+function saveName(){let n=$('nameInput').value.trim();if(n){state.name=n;save();$('nameModal').classList.add('hidden');renderAll();toast(`Halo, ${n}! 👋`)}}
+function resetAll(){if(confirm('Reset semua progress AQUA-CYCLE LAB?')){localStorage.removeItem('aqua2');location.reload()}}
+if(!state.name||state.name==='Penjelajah Aqua')setTimeout(openName,400);
+renderAll();renderGame();renderQuiz();updateLab();
+</script>
+</body>
+</html>
