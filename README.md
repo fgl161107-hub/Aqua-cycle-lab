@@ -3,6 +3,7 @@
 Build final revisi sesuai standar yang dikunci bersama:
 
 - Satu aplikasi SAGE-AI berisi dua materi: **Siklus Air** dan **Ekosistem**.
+- Sebelum masuk ke halaman materi, siswa mengisi **Nama** dan **Kelas**; identitas tersimpan di perangkat dan dapat diubah dari Profil.
 - Alur belajar kedua materi sengaja berbeda.
 - Semua objek pembelajaran memakai visual foto nyata yang relevan; tidak menggunakan emoji sebagai objek belajar.
 - Foto tidak dibuat sebagai satu background yang diulang di semua tahap. Setiap tahap memakai konteks visual yang berbeda.
@@ -39,7 +40,7 @@ Foto diambil dari Wikimedia Commons melalui `Special:FilePath` sehingga halaman 
 - Rice grasshopper — Wikimedia Commons: https://commons.wikimedia.org/wiki/File:Rice_grasshopper.jpg
 - Rice paddy frogs — J. Patrick Fischer — CC BY 3.0: https://commons.wikimedia.org/wiki/File:Rice_paddy_frogs_genus_Fejervarya.jpg
 - Sparrows in the rice field — Pillar1984 — CC BY-SA 2.0: https://commons.wikimedia.org/wiki/File:Sparrows_in_the_rice_field_(14749194072).jpg
-- Tilapia 001 — foto ikan tilapia nyata: https://commons.wikimedia.org/wiki/File:Tilapia_001.jpg
+- Tilapia oreochromis niloticus fish — foto ikan tilapia yang menampilkan objek ikan secara langsung: https://commons.wikimedia.org/wiki/File:Tilapia_oreochromis_niloticus_fish.jpg
 - Mina padi Java — Kembangraps — CC BY-SA 4.0: https://commons.wikimedia.org/wiki/File:Mina_padi_java_Pj_IMG-20150313-WA0004.jpg
 - Panen padi di sawah — Arnawakomang — CC BY-SA 4.0: https://commons.wikimedia.org/wiki/File:Panen_padi_di_sawah.jpg
 - Paddy field in Kalibaru — Farah Salsabila: https://commons.wikimedia.org/wiki/File:Paddy_field_in_Kalibaru,_East_Java,_Indonesia.jpg
@@ -69,6 +70,6 @@ Upload seluruh isi folder ini ke repository. Buka `index.html` melalui GitHub Pa
 Sebelum dipublikasikan, cek setiap foto pada card dan modal di mobile portrait dan desktop. Cek juga seluruh tujuh tahap pada masing-masing materi.
 
 ### Verifikasi perubahan foto
-- **Ikan:** menggunakan *Tilapia 001.jpg*, sehingga kartu "Ikan" benar-benar menampilkan objek ikan, bukan kolam atau lanskap. Sumber Commons: https://commons.wikimedia.org/wiki/File:Tilapia_001.jpg
+- **Ikan:** menggunakan *Tilapia oreochromis niloticus fish.jpg*, sehingga kartu "Ikan" benar-benar menampilkan objek ikan, bukan kolam atau lanskap. Sumber Commons: https://commons.wikimedia.org/wiki/File:Tilapia_001.jpg
 - **Tanah:** menggunakan *Soil.jpg*, foto yang secara langsung menampilkan objek tanah. Sumber Commons: https://commons.wikimedia.org/wiki/File:Soil.jpg
 - **Katak:** menggunakan *Paddy Frog (Fejervarya limnocharis).jpg*, sehingga objek katak terlihat sebagai satu objek yang jelas. Sumber Commons: https://commons.wikimedia.org/wiki/File:Paddy_Frog_(Fejervarya_limnocharis).jpg
