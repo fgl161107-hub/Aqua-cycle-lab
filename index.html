@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Konstitusi Quest — game edukasi PPKn untuk siswa sekolah dasar.">
+  <title>Konstitusi Quest | Petualangan Warga Negara</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" onclick="showPage('home');return false;"><span class="brand-mark">🏛️</span><span>Konstitusi<span class="brand-accent">Quest</span><small>Petualangan Warga Negara</small></span></a>
+    <nav>
+      <button class="nav-btn active" data-page="home" onclick="showPage('home')">Beranda</button>
+      <button class="nav-btn" data-page="missions" onclick="showPage('missions')">Peta Misi</button>
+      <button class="nav-btn" data-page="student" onclick="showPage('student')">Progresku</button>
+      <button class="nav-btn" data-page="leaderboard" onclick="showPage('leaderboard')">Peringkat</button>
+      <button class="nav-btn teacher-nav" data-page="teacher" onclick="showPage('teacher')">Dashboard Guru</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="page-home" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">🎮 GAME EDUKASI PPKn SD</div>
+          <h1>Jadilah <span>Penjaga Konstitusi</span> Muda!</h1>
+          <p>Jelajahi dunia seru untuk belajar tentang konstitusi, UUD NRI Tahun 1945, hak, kewajiban, dan tanggung jawab dalam kehidupan sehari-hari.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="showPage('missions')">Mulai Petualangan <span>➜</span></button>
+            <button class="btn btn-secondary" onclick="showPage('student')">Lihat Progresku</button>
+          </div>
+          <div class="hero-stats"><div><strong>6</strong><span>Misi belajar</span></div><div><strong>30+</strong><span>Tantangan</span></div><div><strong>5</strong><span>Level petualangan</span></div></div>
+        </div>
+        <div class="hero-art"><div class="sun"></div><div class="floating-card card-one">⭐ +XP</div><div class="mascot">🦉</div><div class="book">📘</div><div class="speech">Halo, Penjelajah!<br><small>Ayo belajar bersama!</small></div><div class="island"></div></div>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">MULAI DARI SINI</span><h2>Petualanganmu menanti</h2><p>Pilih misi, pelajari materinya, lalu selesaikan tantangannya.</p></div><button class="text-button" onclick="showPage('missions')">Lihat semua misi →</button></div>
+      <div id="home-missions" class="mission-grid"></div>
+      <div class="tip-banner"><div class="tip-icon">💡</div><div><strong>Ingat, setiap jawaban adalah kesempatan belajar!</strong><p>Kalau jawabanmu belum tepat, baca pembahasannya dan coba lagi. Kamu pasti bisa berkembang.</p></div></div>
+    </section>
+
+    <section id="page-missions" class="page">
+      <div class="page-intro"><span class="eyebrow">PETA PETUALANGAN</span><h1>Enam Misi Penjaga Konstitusi</h1><p>Selesaikan misi secara berurutan untuk mengumpulkan XP dan membuka lencana.</p></div>
+      <div class="progress-strip"><div><strong id="mission-count">0 dari 6 misi selesai</strong><span>Perjalananmu menjadi Penjaga Konstitusi Muda</span></div><div class="progress-track"><span id="overall-progress"></span></div></div>
+      <div id="mission-grid" class="mission-grid"></div>
+    </section>
+
+    <section id="page-quiz" class="page">
+      <button class="back-link" onclick="showPage('missions')">← Kembali ke peta misi</button>
+      <div class="quiz-shell">
+        <div class="quiz-top"><span id="quiz-mission-tag" class="eyebrow">MISI 1</span><span id="quiz-question-count">Soal 1 dari 5</span></div>
+        <div class="progress-track quiz-progress"><span id="quiz-progress"></span></div>
+        <div id="quiz-content"></div>
+      </div>
+    </section>
+
+    <section id="page-result" class="page">
+      <div class="result-card">
+        <div id="result-emoji" class="result-emoji">🎉</div>
+        <span class="eyebrow">MISI SELESAI</span>
+        <h1 id="result-title">Kerja bagus!</h1>
+        <p id="result-message">Kamu telah menyelesaikan tantangan.</p>
+        <div class="score-circle"><strong id="result-score">0</strong><span>SKOR</span></div>
+        <div class="result-stats"><div><strong id="result-correct">0/0</strong><span>Jawaban benar</span></div><div><strong id="result-xp">+0 XP</strong><span>XP didapat</span></div><div><strong id="result-badge">—</strong><span>Lencana</span></div></div>
+        <div id="result-review" class="review-list"></div>
+        <div class="hero-actions centered"><button class="btn btn-primary" onclick="showPage('missions')">Pilih Misi Berikutnya →</button><button class="btn btn-secondary" onclick="showPage('student')">Lihat Progresku</button></div>
+      </div>
+    </section>
+
+    <section id="page-student" class="page">
+      <div class="page-intro"><span class="eyebrow">DASHBOARD SISWA</span><h1>Halo, Penjelajah! 👋</h1><p>Perjalanan kecilmu hari ini adalah langkah besar untuk belajar menjadi warga negara yang bertanggung jawab.</p></div>
+      <div class="profile-panel"><div class="avatar">🦉</div><div class="profile-info"><label for="student-name">Nama tampilan</label><div class="name-edit"><input id="student-name" maxlength="30" placeholder="Tulis nama panggilanmu"><button class="btn btn-small btn-primary" onclick="saveName()">Simpan</button></div><strong id="student-level">Penjelajah Konstitusi</strong><span id="student-xp">0 XP terkumpul</span></div><div class="level-medal">🏅<small>LEVEL</small><strong id="level-number">1</strong></div></div>
+      <div class="dashboard-grid"><div class="stat-card"><span class="stat-icon">🗺️</span><strong id="student-completed">0/6</strong><span>Misi selesai</span></div><div class="stat-card"><span class="stat-icon">⭐</span><strong id="student-total-score">0%</strong><span>Rata-rata skor</span></div><div class="stat-card"><span class="stat-icon">🎖️</span><strong id="student-badges">0</strong><span>Lencana</span></div></div>
+      <div class="section-heading"><div><h2>Catatan perjalanan</h2><p>Hasil terbaikmu di setiap misi.</p></div></div>
+      <div id="student-history" class="history-list"></div>
+      <div class="tip-banner"><div class="tip-icon">🌱</div><div><strong>Belajar itu proses, bukan perlombaan.</strong><p>Ulangi misi untuk melatih pemahamanmu. Skor terbaikmu akan tetap tercatat.</p></div></div>
+    </section>
+
+    <section id="page-leaderboard" class="page">
+      <div class="page-intro"><span class="eyebrow">PAPAN PENCAPAIAN</span><h1>Hall of Explorers 🏆</h1><p>Apresiasi untuk semangat belajar dan pencapaian. Setiap orang punya kesempatan untuk berkembang!</p></div>
+      <div class="leaderboard-card"><div class="leaderboard-head"><div><h2>Peringkat petualang</h2><p>Contoh peringkat pada perangkat ini</p></div><span class="pill">⭐ Berdasarkan XP</span></div><div id="leaderboard-list"></div><p class="small-note">Peringkat ini merupakan demo lokal. Untuk leaderboard bersama antarsiswa, hubungkan website ke backend dan database.</p></div>
+    </section>
+
+    <section id="page-teacher" class="page">
+      <div class="page-intro"><span class="eyebrow">RUANG GURU</span><h1>Dashboard Guru 📊</h1><p>Pantau hasil latihan pada perangkat ini dan gunakan data contoh untuk mengenal fitur dashboard.</p></div>
+      <div class="demo-warning">ℹ️ Mode demo: data tersimpan di browser yang sedang digunakan. Ini belum merupakan sistem kelas online dengan database bersama.</div>
+      <div class="dashboard-grid teacher-stats"><div class="stat-card"><span class="stat-icon">👩‍🎓</span><strong id="teacher-student-count">1</strong><span>Profil lokal</span></div><div class="stat-card"><span class="stat-icon">📝</span><strong id="teacher-attempt-count">0</strong><span>Percobaan kuis</span></div><div class="stat-card"><span class="stat-icon">📈</span><strong id="teacher-average">0%</strong><span>Rata-rata skor</span></div></div>
+      <div class="teacher-panel"><div class="section-heading"><div><h2>Ringkasan hasil per misi</h2><p>Gunakan hasil ini untuk menentukan materi yang perlu diulas kembali.</p></div><button class="btn btn-secondary btn-small" onclick="exportCSV()">Unduh laporan CSV</button></div><div id="teacher-mission-results"></div></div>
+      <div class="teacher-panel"><h2>Materi pembelajaran</h2><p>Enam misi mengikuti urutan materi dari pengenalan konstitusi hingga sikap bertanggung jawab.</p><div id="teacher-material-list" class="material-list"></div></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">🏛️ KonstitusiQuest</div><p>Belajar memahami hak, melaksanakan kewajiban, dan bertindak bertanggung jawab.</p><small>Media belajar PPKn SD • Materi edukasi, bukan pengganti sumber hukum resmi.</small></footer>
+  <script src="script.js"></script>
+</body>
+</html>
